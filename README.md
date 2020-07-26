@@ -28,6 +28,12 @@ data.setGender( Data.FEMALE )
     .setWeight( 60 )
 ```
 
+Note that rather than set the age, you can set the date of birth instead:
+
+```js
+data.setDateOfBirth( new Date( 1980, 6, 3 ) )
+```
+
 Create an instance of the `BMR` class:
 
 ```js

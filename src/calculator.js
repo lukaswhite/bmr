@@ -1,13 +1,13 @@
 import Data from './data'
-import { MissingInformationError, InvalidFormulaError } from "./errors";
+import { MissingInformationError, InvalidFormulaError } from "./errors"
 
 export default class BMR {
 
-    static MIFFLIN_ST_JEOR = 'mifflin-st-jeor'
-    static HARRIS_BENEDICT = 'harris-benedict'
-    static HARRIS_BENEDICT_REVISED = 'harris-benedict-revised'
-    static KATCH_MCARDLE ='katch-mcardle'
-    static SCHOFIELD = 'schofield'
+    static get MIFFLIN_ST_JEOR() { return 'mifflin-st-jeor' }
+    static get HARRIS_BENEDICT() { return 'harris-benedict' }
+    static get HARRIS_BENEDICT_REVISED() { return 'harris-benedict-revised' }
+    static get KATCH_MCARDLE() { return 'katch-mcardle' }
+    static get SCHOFIELD() { return 'schofield' }
 
     constructor( formula = this.constructor.MIFFLIN_ST_JEOR ) {
         if ( ! [
@@ -19,6 +19,10 @@ export default class BMR {
         ].includes( formula ) ) {
             throw new InvalidFormulaError( 'Invalid formula' )
         }
+        this.formula        =   formula
+    }
+
+    setFormula( formula ) {
         this.formula        =   formula
     }
 
@@ -103,7 +107,7 @@ export default class BMR {
             return Math.round( 13.384 * data.weight + 692.6 )
         }
         if ( data.age < 30 ) {
-            return Math.round( 14.818 * data.weight + 692.2 )
+            return Math.round( 14.818 * data.weight + 486.6 )
         }
         if ( data.age < 60 ) {
             return Math.round( 8.126 * data.weight + 845.6 )

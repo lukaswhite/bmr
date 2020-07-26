@@ -1,5 +1,6 @@
 import { BMR, Data } from '../src/index'
 import { MissingInformationError, InvalidFormulaError } from "../src/errors"
+import MockDate from 'mockdate'
 
 describe('instantiating', () => {
   it('should default to Mifflin St Jeor', () => {
@@ -215,6 +216,14 @@ describe('schofield', () => {
         .setWeight( 40 )
     expect(bmr.calculate(data)).toEqual(1228)
   })
+  it('should calculate bmr for a female under 30', () => {
+    let bmr = new BMR( BMR.SCHOFIELD )
+    let data = new Data( )
+    data.setGender( Data.FEMALE )
+        .setAge( 27 )
+        .setWeight( 50 )
+    expect(bmr.calculate(data)).toEqual(1228)
+  })
   it('should calculate bmr for a female between 30 and 60', () => {
     let bmr = new BMR( BMR.SCHOFIELD )
     let data = new Data( )
@@ -254,6 +263,14 @@ describe('schofield', () => {
         .setAge( 16 )
         .setWeight( 40 )
     expect(bmr.calculate(data)).toEqual(1366)
+  })
+  it('should calculate bmr for a male under 30', () => {
+    let bmr = new BMR( BMR.SCHOFIELD )
+    let data = new Data( )
+    data.setGender( Data.MALE )
+        .setAge( 26 )
+        .setWeight( 60 )
+    expect(bmr.calculate(data)).toEqual(1596)
   })
   it('should calculate bmr for a male between 30 and 60', () => {
     let bmr = new BMR( BMR.SCHOFIELD )
@@ -301,6 +318,17 @@ describe('katch mcardle', () => {
       data.setBodyFat( 17 )
       const result = bmr.calculate(data)
     }).toThrow(MissingInformationError)
+  })
+})
+
+describe('data object', () => {
+  it('should calculate age from date of birth', () => {
+    MockDate.set( new Date( 2019, 3, 5 ) )
+    let data = new Data( )
+    data.setDateOfBirth( new Date( 1980, 6, 23 ) )
+    expect( data.age ).toEqual( 38 )
+    data.setDateOfBirth( new Date( 1980, 3, 4 ) )
+    expect( data.age ).toEqual( 39 )
   })
 })
 

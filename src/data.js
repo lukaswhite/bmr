@@ -1,7 +1,7 @@
 export default class Data {
 
-    static MALE     =   'm'
-    static FEMALE   =   'f'
+    static get MALE() { return 'm' }
+    static get FEMALE() { return 'f' }
 
     constructor(  ) {
         this.gender                 =   null
@@ -9,7 +9,6 @@ export default class Data {
         this.height                 =   null
         this.lbm                    =   null
         this.bodyFat                =   null
-        this.dob                    =   null
         this.age                    =   null
     }
 
@@ -38,9 +37,11 @@ export default class Data {
         return this
     }
 
-    setDob( dob ) {
-        this.dob = dob
-        return this
+    setDateOfBirth( dob ) {
+        const ageDifMs = Date.now() - dob.getTime()
+        let ageDate = new Date()
+        ageDate.setTime(ageDifMs)
+        this.age = Math.abs(ageDate.getUTCFullYear() - 1970)
     }
 
     setAge( age ) {

@@ -1,6 +1,6 @@
 {
   "name": "@lukaswhite/bmr",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A small JS library for calculating BMR (Basal Metabolic Rate).",
   "main": "lib/index.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "test": "jest"
   },
   "author": "Lukas White <hello@lukaswhite.com>",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.2",
@@ -33,6 +33,8 @@
     "rollup-plugin-uglify": "^3.0.0"
   },
   "jest": {
-    "testURL": "https://example.com"
+    "testURL": "https://example.com",
+    "collectCoverage": true,
+    "coverageReporters": ["json", "html"]
   }
 }
