@@ -28,6 +28,8 @@ data.setGender( Data.FEMALE )
     .setWeight( 60 )
 ```
 
+> The height and weight should be in centimetres and kilogrammes respectively
+
 Note that rather than set the age, you can set the date of birth instead:
 
 ```js
