@@ -42,6 +42,7 @@ export default class Data {
         let ageDate = new Date()
         ageDate.setTime(ageDifMs)
         this.age = Math.abs(ageDate.getUTCFullYear() - 1970)
+        return this
     }
 
     setAge( age ) {
