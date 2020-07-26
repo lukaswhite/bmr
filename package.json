@@ -1,0 +1,38 @@
+{
+  "name": "@lukaswhite/bmr",
+  "version": "0.1.0",
+  "description": "A small JS library for calculating BMR (Basal Metabolic Rate).",
+  "main": "lib/index.js",
+  "scripts": {
+    "clean": "rimraf lib",
+    "build": "npm run clean && BABEL_ENV=production rollup --config rollup.config.js",
+    "prepare": "npm run clean && npm run build",
+    "test": "jest"
+  },
+  "author": "Lukas White <hello@lukaswhite.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.2",
+    "babel-jest": "^25.0.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-es2017-object-entries": "0.0.5",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^4.18.2",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-prettier": "^2.6.0",
+    "jest": "^25.0.0",
+    "mockdate": "^3.0.2",
+    "prettier": "^1.12.1",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.51.7",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-commonjs": "^8.2.6",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-uglify": "^3.0.0"
+  },
+  "jest": {
+    "testURL": "https://example.com"
+  }
+}
